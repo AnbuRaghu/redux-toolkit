@@ -1,0 +1,44 @@
+creating store 
+---------------
+to create a store, we need to import a method from redux toolkit called { configureStore}
+
+e.g)
+const store =configureStore(store({
+
+})
+it takes an object as params,in which the first param is called reducer.
+
+
+Slice
+--------
+it's used to create a particular state object.it's called slices of states. to create slice we need to import a method from redux-toolkit caööed {createSlice}.
+it's also takes an object as params.
+here the 1st params is called name, we can give any name we want for this slice.
+2nd params is initial state. here we give 'value' key alwasy it's important
+3rd params is an reducers,it's an object , here we pass list of actions
+
+const userSlice = createSlice({
+    name: "user",
+    initialState: {
+        value: {
+            name: "",
+            age: 0,
+            email: "",
+        },
+    },
+    reducers: {
+        login: (state, action) => {
+            state.value = action.payload;
+        },
+    },
+});
+Finally we have tp export this slice like so.. whenever we create slice in the slice object, we have a .reducer object.. this reducer object we have to import then we have to pass this slice in reducer state
+export default userSlice.reducer;
+// here we export the login action from userSlice.actions objrct
+export const{login} =userSlice.actions;
+
+
+
+***************
+//useDispatch is used to update a globala state value
+//useselector is used to fetch the state value
